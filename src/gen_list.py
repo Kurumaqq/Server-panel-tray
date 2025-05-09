@@ -5,7 +5,7 @@ services = []
 backups = []
 
 
-def gen_repo(username : str):
+def get_all_repo(username : str):
     links = []
     domen = 'https://github.com'
     url = f'https://github.com/{username}?tab=repositories'
@@ -17,6 +17,3 @@ def gen_repo(username : str):
         url_repo = f'{domen}{i.find('a').get('href')}'
         links.append(url_repo)
     return links
-
-if __name__ == '__main__':
-    print(gen_repo('Kurumaqq'))

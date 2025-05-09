@@ -1,8 +1,8 @@
 import pystray
 from PIL import Image
-from menu import menu
+from src.menu import menu
 
-image = Image.open('icon.jpg')
+image = Image.open('assets/icon.ico')
 
 
 icon = pystray.Icon(
