@@ -1,0 +1,4 @@
+pillow>=11.2.1
+pystray>=0.19.5
+requests>=2.32.3
+beautifulsoup4>=4.13.4

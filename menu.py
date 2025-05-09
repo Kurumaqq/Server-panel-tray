@@ -1,6 +1,8 @@
 from pystray import Menu, MenuItem as Item
 import os
-
+from threading import Thread
+from gen_list import *
+from actions import *
 
 def menu():
     return Menu(
@@ -24,11 +26,15 @@ def item_backups():
     )
 
 def item_reposytory():
+    all_repo = (
+        Item(i.split('/')[-1], 
+        action= lambda i, it: download_repo(it.text, 'Kurumaqq', 'D:/')) 
+        for i in gen_repo('Kurumaqq'))
+
     return Item(
             'Reposytoryes',
             Menu(
-                Item('Reposytory1', action=lambda i, it: print(f'download {it.text}')),
-                Item('Reposytory2', action=lambda i, it: print(f'download {it.text}')),
+                *all_repo,
                 Menu.SEPARATOR,
                 Item('Download all', action=lambda i, it: print('downloads'))
             )
