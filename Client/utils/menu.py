@@ -1,6 +1,5 @@
 from pystray import Menu, MenuItem as Item
-import os
-from threading import Thread
+from pathlib import Path
 from utils.gen_list import *
 from utils.actions import *
 
@@ -15,7 +14,8 @@ def menu():
         item_backups(),
         Item(
             'Config', 
-            action=lambda i, it: os.startfile('D:/dev/server_panel/config')
+            action=lambda i, it: os.startfile(f'{Path(__file__).parent.resolve().parent.resolve()}/config')
+
         ),
         Item(
             'Exit', 
@@ -37,7 +37,7 @@ def item_backups():
 def item_reposytory():
     all_repo = (
         Item(i.split('/')[-1], 
-        action= lambda i, it: download_repo(it.text, 'Kurumaqq', 'D:\Repo')) 
+        action= lambda i, it: download_repo(it.text, 'Kurumaqq', r'D:\Repo')) 
         for i in get_all_repo('Kurumaqq'))
 
     return Item(
@@ -46,7 +46,7 @@ def item_reposytory():
                 *all_repo,
                 Menu.SEPARATOR,
                 Item('Download all', 
-                     action=lambda i, it: download_all_repo('Kurumaqq', 'D:\Repo'))
+                     action=lambda i, it: download_all_repo('Kurumaqq', r'D:\Repo'))
             )
         )
 
