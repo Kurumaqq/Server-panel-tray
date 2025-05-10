@@ -56,16 +56,16 @@ def item_services():
             Menu(
                 Item('tg-bot',
                      Menu(
-                        Item('Restart',
-                        action=lambda i, it: print(f'restart'),
+                        Item('Start_tg-bot',
+                         action=lambda i, it: start_systemctl(it.text.split('_')[1]),
                         ),
-                        Item('Stop',
-                         action=lambda i, it: print(f'stop'),
+                        Item('Restart_tg-bot',
+                        action=lambda i, it: restart_systemctl(it.text.split('_')[1]),
                         ),
-                        Item('Start',
-                         action=lambda i, it: print(f'start'),
+                        Item('Stop_tg-bot',
+                        action=lambda i, it: stop_systemctl(it.text.split('_')[1]),
                         ),
-                    )
+                    ) 
                 ),
                 Item('Discord_bot',
                      Menu(

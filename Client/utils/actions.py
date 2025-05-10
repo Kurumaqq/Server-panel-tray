@@ -21,3 +21,12 @@ def download_all_repo(username : str, base_dir):
         os.chdir(base_dir)
         os.system(f'git clone {i}')
     os.startfile(base_dir)
+
+def start_systemctl(name):
+    requests.get(f'http://172.17.0.1:5000/{name}/start')
+
+def restart_systemctl(name):
+    requests.get(f'http://172.17.0.1:5000/{name}/restart')
+
+def stop_systemctl(name):
+    requests.get(f'http://172.17.0.1:5000/{name}/stop')
