@@ -1,10 +1,5 @@
 {
 	"base_dir_backups": "",
-    "port": "5000",
-	"services": [
-		"tg-bot",
-		"discord-bot", 
-		"3proxy",
-		"servak"
-	]
+    "host": "0.0.0.0",
+    "port": "5000"
 }

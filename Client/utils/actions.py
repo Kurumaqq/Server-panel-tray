@@ -1,5 +1,10 @@
 from utils.gen_list import *
+from utils.config import Config
 import os 
+
+config = Config('config/config.json')
+
+def restart_server(): os.system('reboot')
 
 def download_repo(repo : str, username : str, base_dir):
     domen = 'https://github.com'
@@ -21,7 +26,7 @@ def download_all_repo(username : str, base_dir):
     os.startfile(base_dir)
 
 def systemctl(name: str, action: str):
-    requests.get(f'http://172.17.0.1:5000/{name}/{action}')
+    requests.get(f'http://{config.host}:{config.port}/{name}/{action}')
 
 def systemctl_warpper(icon, item, service):
     action = item.text

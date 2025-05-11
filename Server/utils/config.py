@@ -14,3 +14,6 @@ class Config():
     @property
     def base_dir_backups(self):
         return self.config['base_dir_backups']
+    @property
+    def host(self):
+        return self.config['host']

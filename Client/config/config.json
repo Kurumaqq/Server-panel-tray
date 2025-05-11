@@ -2,10 +2,7 @@
 	"git_username": "",
 	"git_base_dir": "",
 	"backups_base_dir": "",
-	"sevices": [
-		"tg-bot",
-		"discord-bot", 
-		"3proxy",
-		"servak"
-	]
+    "ignored_services": [""],
+    "host": "0.0.0.0",
+    "port": "5000"
 }

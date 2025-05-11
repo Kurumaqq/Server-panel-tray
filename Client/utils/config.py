@@ -1,9 +1,18 @@
 import json
+import requests
 
 class Config():
     def __init__(self, config_path: str):
         self.config = json.load(open(config_path, 'r'))
 
+    @property
+    def host(self):
+        return self.config['host']
+
+    @property
+    def port(self):
+        return self.config['port']
+    
     @property
     def git_username(self):
         return self.config['git_username']
@@ -18,4 +27,11 @@ class Config():
     
     @property
     def sevices(self):
-        return self.config['sevices']
+        services = requests.get(f'http://{self.host}:{self.port}/get-services').text
+        print(type(services))
+        print(services)
+        return services.split(';')
+    
+    @property
+    def ignored_services(self):
+        return self.config['ignored_services']

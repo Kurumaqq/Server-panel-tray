@@ -9,10 +9,6 @@ config = Config('config/config.json')
 
 def menu():
     return Menu(
-        Item(
-            'Restart', 
-             action=lambda i, it: print('restart')
-        ),
         item_services(),
         item_reposytory(),
         item_backups(),
@@ -20,6 +16,15 @@ def menu():
             'Config', 
             action=lambda i, it: os.startfile(f'{Path(__file__).parent.resolve().parent.resolve()}/config')
 
+        ),
+        Item(
+            'Restart', 
+             action=lambda i, it: restart_server()
+        ),
+        Menu.SEPARATOR,
+        Item(
+            'Restart', 
+            action=lambda i, it: i.stop()
         ),
         Item(
             'Exit', 
@@ -61,6 +66,9 @@ def item_services():
     submenu_items = []
     
     for service in services: 
+        if service in config.ignored_services:
+            continue
+        
         for action in action_list:
             submenu_items.append(Item(
                 action, 

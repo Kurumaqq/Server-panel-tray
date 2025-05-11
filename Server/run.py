@@ -7,4 +7,4 @@ config = Config('config/config.json')
 
 if __name__ == '__main__':
     load_url_rule(app)
-    app.run(host='0.0.0.0', port=config.port)
+    app.run(host=config.host, port=config.port)
