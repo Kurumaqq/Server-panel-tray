@@ -1,6 +1,5 @@
 from utils.gen_list import *
 import os 
-from shutil import rmtree, move
 
 def download_repo(repo : str, username : str, base_dir):
     domen = 'https://github.com'
@@ -9,7 +8,6 @@ def download_repo(repo : str, username : str, base_dir):
         base_path_repo = f'{base_dir}/{repo}'
         if i == url_repo:
             os.chdir(base_dir)
-            move(f'{base_path_repo}/.git', f'{base_path_repo}/tmp)')
             os.system(f'git clone {url_repo}')
             os.startfile(base_path_repo)
 
@@ -22,11 +20,9 @@ def download_all_repo(username : str, base_dir):
         os.system(f'git clone {i}')
     os.startfile(base_dir)
 
-def start_systemctl(name):
-    requests.get(f'http://172.17.0.1:5000/{name}/start')
+def systemctl(name: str, action: str):
+    requests.get(f'http://172.17.0.1:5000/{name}/{action}')
 
-def restart_systemctl(name):
-    requests.get(f'http://172.17.0.1:5000/{name}/restart')
-
-def stop_systemctl(name):
-    requests.get(f'http://172.17.0.1:5000/{name}/stop')
+def systemctl_warpper(icon, item, service):
+    action = item.text
+    systemctl(service, action)

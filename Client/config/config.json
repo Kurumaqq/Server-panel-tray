@@ -1,11 +1,11 @@
 {
-	"username_git": "",
-	"base_dir_git": "",
-	"base_dir_backups": "",
+	"git_username": "",
+	"git_base_dir": "",
+	"backups_base_dir": "",
 	"sevices": [
-		"tg-bot.service",
-		"discord-bot.service", 
-		"3proxy.service",
-		"servak.service"
+		"tg-bot",
+		"discord-bot", 
+		"3proxy",
+		"servak"
 	]
 }

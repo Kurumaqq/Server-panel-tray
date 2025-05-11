@@ -1,7 +1,11 @@
 from pystray import Menu, MenuItem as Item
 from pathlib import Path
+from functools import partial
+from utils.config import Config
 from utils.gen_list import *
 from utils.actions import *
+
+config = Config('config/config.json')
 
 def menu():
     return Menu(
@@ -51,47 +55,19 @@ def item_reposytory():
         )
 
 def item_services():
-    return Item(
-            'Services',
-            Menu(
-                Item('tg-bot',
-                     Menu(
-                        Item('Start_tg-bot',
-                         action=lambda i, it: start_systemctl(it.text.split('_')[1]),
-                        ),
-                        Item('Restart_tg-bot',
-                        action=lambda i, it: restart_systemctl(it.text.split('_')[1]),
-                        ),
-                        Item('Stop_tg-bot',
-                        action=lambda i, it: stop_systemctl(it.text.split('_')[1]),
-                        ),
-                    ) 
-                ),
-                Item('Discord_bot',
-                     Menu(
-                        Item('Restart',
-                        action=lambda i, it: print(f'restart')
-                        ),
-                        Item('Stop',
-                         action=lambda i, it: print(f'stop')
-                        ),
-                        Item('Start',
-                         action=lambda i, it: print(f'start')
-                        ),
-                    )
-                ),
-                Item('Backups',
-                     Menu(
-                        Item('Restart',
-                        action=lambda i, it: print(f'restart')
-                        ),
-                        Item('Stop',
-                         action=lambda i, it: print(f'stop')
-                        ),
-                        Item('Start',
-                         action=lambda i, it: print(f'start')
-                        ),
-                    )
-                ),
-            ),
-    )
+    services = config.sevices
+    action_list = ['start', 'stop', 'restart']
+    menu_items = []
+    submenu_items = []
+    
+    for service in services: 
+        for action in action_list:
+            submenu_items.append(Item(
+                action, 
+                partial(systemctl_warpper, service=service)
+                )
+            )
+        menu_items.append(Item(service, Menu(*submenu_items)))
+        submenu_items = []
+
+    return Item('Services',Menu(*menu_items))
