@@ -2,7 +2,7 @@
 	"git_username": "",
 	"git_base_dir": "",
 	"backups_base_dir": "",
-    "ignored_services": [""],
-    "host": "0.0.0.0",
+    "ignored_services": ["iscsi", "syslog", "vmtoolsd"],
+    "host": "83.219.250.128",
     "port": "5000"
 }

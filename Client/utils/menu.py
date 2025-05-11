@@ -23,10 +23,6 @@ def menu():
         ),
         Menu.SEPARATOR,
         Item(
-            'Restart', 
-            action=lambda i, it: i.stop()
-        ),
-        Item(
             'Exit', 
             action=lambda i, it: i.stop()
         ),
