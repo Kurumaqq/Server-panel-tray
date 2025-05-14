@@ -1,6 +1,6 @@
 from flask import Flask
-from .config import Config
-from .route import *
+from utils.config import Config
+from utils.route import *
 
 config = Config('config/config.json')
 
@@ -25,3 +25,6 @@ def load_stop_service_rule(app):
 
 def load_get_services(app):
     app.add_url_rule('/get-services', 'get-services', get_services)
+
+def load_send_files(app):
+    app.add_url_rule('/send-file', 'send-file', files)

@@ -26,7 +26,10 @@ def download_all_repo():
     os.startfile(config.git_base_dir)
 
 def systemctl(name: str, action: str):
-    requests.get(f'http://{config.host}:{config.port}/{name}/{action}')
+    requests.get(
+        f'http://{config.host}:{config.port}/{name}/{action}',
+        headers={'Authorization': config.token}
+        )
 
 def systemctl_warpper(icon, item, service):
     action = item.text
