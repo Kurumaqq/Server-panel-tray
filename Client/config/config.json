@@ -1,9 +1,9 @@
 {
-	"git_username": "",
-	"git_base_dir": "",
+	"git_username": "Kurumaqq",
+	"git_base_dir": "D:/Repo",
 	"backups_base_dir": "",
-    "ignored_services": [""],
-    "host": "0.0.0.0",
+    "ignored_services": ["iscsi", "syslog", "vmtoolsd"],
+    "host": "83.219.250.128",
     "port": "5000",
-    "token": ""
+    "token": "1a3f7e9d2c5b8a0f4e6d1c2b3a9f8e7d6c5b4a3f2e1d0c9b8a7f6e5d4c3b2a1f0e9d"
 }

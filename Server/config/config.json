@@ -1,6 +1,6 @@
 {
 	"base_dir_backups":[""],
-    "host": "0.0.0.0",
+    "host": "172.17.0.1",
     "port": "5000",
-    "token": ""
+    "token": "1a3f7e9d2c5b8a0f4e6d1c2b3a9f8e7d6c5b4a3f2e1d0c9b8a7f6e5d4c3b2a1f0e9d"
 }

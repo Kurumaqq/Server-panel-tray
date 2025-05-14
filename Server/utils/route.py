@@ -12,7 +12,7 @@ def service_restart():
     if token == config.token:
         os.system(f'systemctl restart {name.split('_')[0]}.service')
         return '200'
-    return '500'
+    return '401'
 
 def service_stop():
     name = request.endpoint
@@ -22,7 +22,7 @@ def service_stop():
     if token == config.token:
         os.system(f'systemctl stop {name.split('_')[0]}.service')
         return '200'
-    return '500'
+    return '401'
 
 def service_start():
     name = request.endpoint
@@ -30,7 +30,7 @@ def service_start():
     if token == config.token:
         os.system(f'systemctl start {name.split('_')[0]}.service')
         return 'Успешно!!'
-    return '500'
+    return '401'
 
 def get_services():
     token = request.headers.get('Authorization')
@@ -42,7 +42,7 @@ def get_services():
             if name.count('.') == 1:
                 services_list += f'{name.split('.')[0]};'
         return services_list[0:-1]
-    return '500'
+    return '401'
 
 def files():
     token = request.headers.get('Authorization')
@@ -53,4 +53,4 @@ def files():
             as_attachment=True,
             download_name=a.split('/')[-1]
             )
-    return '500'
+    return '401'
